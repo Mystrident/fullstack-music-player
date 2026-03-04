@@ -26,7 +26,11 @@ connectDB();
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: [
+      "http://localhost:5173",
+      "https://fullstack-music-player.vercel.app",
+      /https:\/\/fullstack-music-player.*\.vercel\.app/,
+    ],
     credentials: true,
   }),
 );
