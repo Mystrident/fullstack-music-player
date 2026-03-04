@@ -5,7 +5,7 @@ import connectDB from "./config/connectDB.js";
 import router from "./routes/authRoutes.js";
 import songRouter from "./routes/songRoutes.js";
 
-dotenv.config(".env"); //file config inside .env file will be brought here using this
+dotenv.config(); //file config inside .env file will be brought here using this
 const PORT = process.env.PORT || 5001; //whatever inside the file will be getting access through this
 const app = express(); //all the computational power of express we are givin to the app, we are creating an express object
 
@@ -26,7 +26,7 @@ connectDB();
 
 app.use(
   cors({
-    origin: "http://localhost:5173", //now only 5173 frontend can access our backend
+    origin: process.env.FRONTEND_URL,
     credentials: true,
   }),
 ); //this will set priority like which frontend can access my backend, cuz like insta frontend cannot access my bank account backend, that is the principle of cors, so whatever react frontend code that we will be writing, only that can access my backend
