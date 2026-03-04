@@ -1,0 +1,74 @@
+import React, { useState } from "react";
+
+import axios from "axios";
+import Input from "../common/Input";
+import { useNavigate, useParams } from "react-router-dom";
+import "../../css/auth/ResetPassword.css";
+
+const ResetPassword = () => {
+  const { token } = useParams();
+
+  const navigate = useNavigate(); //when password is reset, it redirects to homepage, this is done using react router dom
+  const [password, setPassword] = useState("");
+  const [status, setStatus] = useState(""); //success or failure
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleReset = async () => {
+    if (!password || password.length < 6) {
+      setStatus("Error");
+      setMessage("password must be atleast 6 characters");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      setStatus("info");
+      setMessage("reseting password");
+
+      await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/auth/reset-password/${token}`,
+        { password },
+      );
+
+      setStatus("success");
+      setMessage("password reset successful! redirecting...");
+
+      setTimeout(() => navigate("/"), 2000);
+    } catch (error) {
+      setStatus("error");
+      setMessage(error?.response?.data?.message || "reset failed, try again");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="reset-wrapper">
+      <h3 className="reset-title">Reset Password</h3>
+      <p className="reset-subtitle">Enter your new password </p>
+
+      <div className="reset-form">
+        <Input
+          label="New Password"
+          type="password"
+          placeholder="Enter new password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        {status === "error" && <div className="reset-error">{message}</div>}
+        {status === "success" && <div className="reset-success">{message}</div>}
+
+        <button
+          className="reset-submit-btn"
+          onClick={handleReset}
+          disabled={loading}
+        >
+          <span>{loading ? "resetting..." : "reset password"}</span>
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default ResetPassword;

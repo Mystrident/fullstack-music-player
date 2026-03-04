@@ -1,0 +1,207 @@
+.auth-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  animation: slideInDown 0.6s ease-out;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-btn {
+  padding: 8px 24px;
+
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.3px;
+}
+
+.auth-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 12px;
+  z-index: -1; /* ✅ FIX */
+}
+
+.auth-btn:active {
+  transform: scale(0.96);
+}
+
+/* Signup Button */
+/* From Uiverse.io by Creatlydev */
+.auth-btn.signup {
+  line-height: 1;
+  text-decoration: none;
+  display: inline-flex;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--clr);
+  color: #fff;
+  border-radius: 10rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  padding-left: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background-color 0.3s;
+}
+
+.button__icon-wrapper {
+  flex-shrink: 0;
+  width: 25px;
+  height: 25px;
+  position: relative;
+  color: var(--clr);
+  background-color: #fff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.auth-btn.signup:hover {
+  background-color: #000;
+}
+
+.auth-btn.signup:hover .button__icon-wrapper {
+  color: #000;
+}
+
+.button__icon-svg--copy {
+  position: absolute;
+  transform: translate(-150%, 150%);
+}
+
+.auth-btn.signup:hover .button__icon-svg:first-child {
+  transition: transform 0.3s ease-in-out;
+  transform: translate(150%, -150%);
+}
+
+.auth-btn.signup:hover .button__icon-svg--copy {
+  transition: transform 0.3s ease-in-out 0.1s;
+  transform: translate(0);
+}
+
+/* Login Button */
+/* From Uiverse.io by adamgiebl */
+/* From Uiverse.io by JaydipPrajapati1910 */
+.auth-btn.login {
+  background: #0000ff;
+  color: white;
+  font-family: inherit;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 0.9em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 1.6em -0.6em #0000ff;
+  overflow: hidden;
+  position: relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+}
+
+.auth-btn.login .icon {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.7em;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em #0000ff;
+  right: 0.3em;
+  transition: all 0.3s;
+}
+
+.auth-btn.login:hover .icon {
+  width: calc(100% - 0.6em);
+}
+
+.auth-btn.login .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #0000ff;
+}
+
+.auth-btn.login:hover .icon svg {
+  transform: translateX(0.1em);
+}
+
+.auth-btn.login:active .icon {
+  transform: scale(0.95);
+}
+
+/* Logout Button */
+.auth-btn.logout {
+  background: linear-gradient(135deg, #a855f7, #ec4899);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+}
+
+.auth-btn.logout::before {
+  background: linear-gradient(135deg, #3cea33, #db2777);
+}
+
+.auth-btn.logout:hover {
+  box-shadow:
+    0 6px 25px rgba(85, 247, 117, 0.6),
+    0 0 40px rgba(168, 85, 247, 0.3);
+  transform: translateY(-2px);
+}
+
+.auth-btn.logout:hover::before {
+  opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .auth-container {
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+
+  .auth-btn {
+    padding: 8px 18px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-container {
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .auth-btn {
+    padding: 7px 14px;
+    font-size: 12px;
+    border-radius: 10px;
+  }
+}
