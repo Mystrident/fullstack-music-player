@@ -26,10 +26,7 @@ connectDB();
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://fullstack-music-player-git-main-mystridents-projects.vercel.app",
-    ],
+    origin: process.env.FRONTEND_URL,
     credentials: true,
   }),
 );
