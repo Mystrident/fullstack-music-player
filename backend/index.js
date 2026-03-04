@@ -26,10 +26,14 @@ connectDB();
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: [
+      "http://localhost:5173",
+      "https://fullstack-music-player-git-main-mystridents-projects.vercel.app",
+    ],
     credentials: true,
   }),
-); //this will set priority like which frontend can access my backend, cuz like insta frontend cannot access my bank account backend, that is the principle of cors, so whatever react frontend code that we will be writing, only that can access my backend
+);
+//this will set priority like which frontend can access my backend, cuz like insta frontend cannot access my bank account backend, that is the principle of cors, so whatever react frontend code that we will be writing, only that can access my backend
 
 app.use("/api/auth", router);
 
