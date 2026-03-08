@@ -173,7 +173,7 @@ By storing only the hashed version, the attacker sees useless scrambled data.*/
 
     await user.save();
 
-    const resetUrl = `${process.env.FRONTEND_URL}/reset-password/${token}`;
+    const resetUrl = `${process.env.FRONTEND_URL}/reset-password/${resetToken}`;
 
     await sendMail({
       to: user.emailID,
