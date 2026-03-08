@@ -32,10 +32,16 @@
 */
 
 import { createSlice } from "@reduxjs/toolkit";
+/*
+createSlice automatically generates:
+
+• reducers
+• actions
+• action types*/
 
 const initialState = {
   user: null, //initially no user is logged in
-  token: localStorage.getItem("token") || null, //try to read token from browser storage, if not found then set it as null
+  token: localStorage.getItem("token") || null, //try to read token from browser storage, if not found then set it as null, This allows persistent login after refresh. If found → restore session
   isAuthenticated: false, //user is logged in or not
   isLoading: false, //no api calls in progress
   error: null, //no errors initially
@@ -100,6 +106,6 @@ export const {
   clearError,
   updateFavourites,
   setUser,
-} = authSlice.actions; //we have exported these slice actions, now this will be userful for the components
+} = authSlice.actions; //we have exported these slice actions, now this will be userful for the components like dispatch(setUser(data))dispatch(logout())
 
-export default authSlice.reducer;
+export default authSlice.reducer; //Exports the reducer so it can be added to the Redux store.

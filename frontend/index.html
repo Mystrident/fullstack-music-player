@@ -1,13 +1,24 @@
 <!doctype html>
+<!--includes modern html standards, else browser will fallback to old standards-->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!--This lets the page correctly display symbols, emojis, non-Latin characters, etc.-->
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <!--Sets the tab icon (favicon)-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Controls mobile scaling.-->
     <title>MusicPlayer</title>
+    <!--The title displayed in the browser tab-->
   </head>
   <body>
+    <!--Now the visible page begins.-->
     <div id="root"></div>
+    <!--This empty div is the portal where React takes over.
+React will inject the entire UI here.
+Think of it like an empty stage before actors appear.-->
     <script type="module" src="/src/main.jsx"></script>
+    <!--This loads your React application.
+    type="module" enables ES modules, so you can use import statements.-->
   </body>
 </html>
